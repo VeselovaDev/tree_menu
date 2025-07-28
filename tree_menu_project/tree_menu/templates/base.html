@@ -1,0 +1,47 @@
+{% load static %}
+{% load draw_menu %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Мой сайт{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        /* Simple menu styling */
+        ul {
+            list-style-type: none;
+            padding-left: 20px;
+        }
+        li a {
+            text-decoration: none;
+            color: black;
+        }
+        li a.active {
+            font-weight: bold;
+            color: darkblue;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Мой сайт</h1>
+        <nav>
+            {# Render the menu dynamically by its name "main_menu" #}
+            {% draw_menu 'main menu' %}
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}
+        {# Page-specific content will be inserted here #}
+        {% endblock %}
+    </main>
+
+    <footer>
+        <p>© 2025 Мой сайт</p>
+    </footer>
+
+</body>
+</html>
